@@ -1,0 +1,9 @@
+services:
+  amytis:
+    build: .
+    container_name: amytis
+    restart: unless-stopped
+    ports:
+      # Baota (宝塔) nginx owns the public HTTPS :37868 and reverse-proxies to
+      # this internal port — the container must NOT bind 37868 directly.
+      - "127.0.0.1:8088:80"
